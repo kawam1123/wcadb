@@ -18,7 +18,7 @@ SELECT DISTINCT personId, competitionId as firstcompId, min(str_to_date(concat(y
 
 CREATE TABLE firstCompsJapanComp IF NOT EXISTS
 AS
-SELECT L.competitionId, L.personId, L.date, F.firstdate,
+SELECT DISTINCT L.competitionId, L.personId, L.date, F.firstdate,
 	(CASE WHEN L.date=F.firstdate THEN '初参加'
    WHEN L.date>F.firstdate THEN '二回目以降'
    ELSE  null END) as 初参加有無
